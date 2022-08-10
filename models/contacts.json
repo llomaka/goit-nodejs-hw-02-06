@@ -79,8 +79,20 @@
   },
   {
     "id": "1d754bc1-1c0d-4a8f-8b20-84a05fe78965",
-    "name": "Rocky Boots",
+    "name": "Brooke Boots",
     "email": "boots@gmail.com",
     "phone": "(333) 511-1885"
+  },
+  {
+    "id": "31674485-8d52-4a8f-a240-6ba7d7f2eb7a",
+    "name": "Oleh Vinnik",
+    "email": "olvi@gmail.com",
+    "phone": "050-522-18-85"
+  },
+  {
+    "id": "1cacc254-e1ac-49c8-a026-cef1277b1017",
+    "name": "Sara Bryk",
+    "email": "sarab@gmail.com",
+    "phone": "+7199-255-13-21"
   }
 ]
