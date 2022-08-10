@@ -7,7 +7,7 @@ const contactsPath = path.join(__dirname, 'contacts.json')
 // reading all contacts
 const listContacts = async () => {
   try {
-      const contactsList = await fs.readFile(contactsPath, 'utf8')
+    const contactsList = await fs.readFile(contactsPath, 'utf8')
     return JSON.parse(contactsList)
   } catch (error) {
     console.error('Error reading contacts')
@@ -37,8 +37,6 @@ const removeContact = async (contactId) => {
     if (!contact) return
     const newContactsArray = contactsArray.filter(contact => contact.id !== contactId)
     await fs.writeFile(contactsPath, JSON.stringify(newContactsArray, null, 2))
-    console.log(`Contact ${contactId} successfully deleted.`)
-    return contact
   } catch (error) {
     console.error(`Error removing contact ${contactId}`)
     throw error
@@ -59,7 +57,6 @@ const addContact = async (body) => {
     }
     contactsArray.push(contact)
     await fs.writeFile(contactsPath, JSON.stringify(contactsArray, null, 2))
-    console.log(`Contact ${name} successfully added.`)
     return contact
   } catch (error) {
     console.error(`Error adding contact ${name}`)
@@ -69,17 +66,18 @@ const addContact = async (body) => {
 
 // update contact by id
 const updateContact = async (contactId, body) => {
-  const { name, email, phone } = body
   try {
     const contactsList = await fs.readFile(contactsPath, 'utf8')
     const contactsArray = JSON.parse(contactsList)
     const contact = contactsArray.find(contact => contact.id === contactId)
-    contact.name = name
-    contact.email = email
-    contact.phone = phone
+    const contactIndex = contactsArray.findIndex(contact => contact.id === contactId)
+    const updatedContact = {
+      ...contact,
+      ...body
+    }
+    contactsArray[contactIndex] = updatedContact
     await fs.writeFile(contactsPath, JSON.stringify(contactsArray, null, 2))
-    console.log(`Contact ${name} successfully updated.`)
-    return contact
+    return updatedContact
   } catch (error) {
     console.error(`Error updating contact ${contactId}`)
     throw error
