@@ -91,8 +91,26 @@
   },
   {
     "id": "1cacc254-e1ac-49c8-a026-cef1277b1017",
-    "name": "Sara Bryk",
-    "email": "sarab@gmail.com",
-    "phone": "+7199-255-13-21"
+    "name": "Sonya Red",
+    "email": "redsonya@gmail.co.uk",
+    "phone": "+44-089-234-56-55"
+  },
+  {
+    "id": "8d57b151-4bef-4a5a-85a1-de049834355f",
+    "name": "Hector Jones",
+    "email": "hector@gmail.com",
+    "phone": "093-234-56-43"
+  },
+  {
+    "id": "e7cc0cd4-96e6-41e1-a697-da1d34f9b6de",
+    "name": "Jassie Williams",
+    "email": "jwilliams@newstar.com.md",
+    "phone": "+39-089-234-56-55"
+  },
+  {
+    "id": "43568d89-d830-4e3d-9e84-fe5ed585a538",
+    "name": "Jolanda Morales",
+    "email": "jmorales@gmail.com",
+    "phone": "+49-333-555-56-55"
   }
 ]

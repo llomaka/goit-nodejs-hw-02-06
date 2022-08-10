@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-catch */
 const fs = require('fs/promises')
 const path = require('path')
-const crypto = require('crypto');
+const crypto = require('crypto')
 const contactsPath = path.join(__dirname, 'contacts.json')
 
 // reading all contacts
@@ -12,7 +12,7 @@ const listContacts = async () => {
   } catch (error) {
     console.error('Error reading contacts')
     throw error
-  }  
+  }
 }
 
 // read contact by id
@@ -45,21 +45,18 @@ const removeContact = async (contactId) => {
 
 // add contact
 const addContact = async (body) => {
-  const { name, email, phone } = body
   try {
     const contactsList = await fs.readFile(contactsPath, 'utf8')
     const contactsArray = JSON.parse(contactsList)
     const contact = {
       id: crypto.randomUUID(),
-      name,
-      email,
-      phone
+      ...body
     }
     contactsArray.push(contact)
     await fs.writeFile(contactsPath, JSON.stringify(contactsArray, null, 2))
     return contact
   } catch (error) {
-    console.error(`Error adding contact ${name}`)
+    console.error(`Error adding contact ${body.name}`)
     throw error
   }
 }
