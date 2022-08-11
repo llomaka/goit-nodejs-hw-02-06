@@ -28,17 +28,17 @@ const removeContactById = async (id) => {
     }
 }
 
-const addContactData = async (contact_object) => {
+const addContactData = async (contactObject) => {
     try {
-        return await addContact(contact_object)
+        return await addContact(contactObject)
     } catch (error) {
         console.log('Error: ', error.message)
     }
 }
 
-const updateContactByIdData = async (id, contact_object) => {
+const updateContactByIdData = async (id, contactObject) => {
     try {
-        return await updateContact(id, contact_object)
+        return await updateContact(id, contactObject)
     } catch (error) {
         console.log('Error: ', error.message)
     }
