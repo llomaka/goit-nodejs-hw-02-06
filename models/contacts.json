@@ -84,12 +84,6 @@
     "phone": "(333) 511-1885"
   },
   {
-    "id": "31674485-8d52-4a8f-a240-6ba7d7f2eb7a",
-    "name": "Oleh Vinnik",
-    "email": "olvi@gmail.com",
-    "phone": "050-522-18-85"
-  },
-  {
     "id": "1cacc254-e1ac-49c8-a026-cef1277b1017",
     "name": "Sonya Red",
     "email": "red1@gmail.com",
@@ -98,19 +92,13 @@
   {
     "id": "8d57b151-4bef-4a5a-85a1-de049834355f",
     "name": "Hector Jones",
-    "email": "hector@gmail.com",
+    "email": "hectorj@yahoo.com",
     "phone": "093-234-56-43"
   },
   {
-    "id": "e7cc0cd4-96e6-41e1-a697-da1d34f9b6de",
-    "name": "Jossie Wiliams",
-    "email": "jwilliams@newstar.com.md",
-    "phone": "+39-089-234-56-55"
-  },
-  {
     "id": "43568d89-d830-4e3d-9e84-fe5ed585a538",
-    "name": "Jolanda Morales",
-    "email": "jmorales@gmail.com",
+    "name": "Jeniffer Martin",
+    "email": "jmartin@dlink.com",
     "phone": "+49-333-555-56-55"
   }
 ]
