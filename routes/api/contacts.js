@@ -12,11 +12,10 @@ const { listContacts,
 
 router.get('/', async (req, res, next) => {
   try {
-    res.json(await listContacts())  
+    res.json(await listContacts())
   } catch (err) {
-    console.log(err.message)
+    res.status(500).json({ 'message': err.message })
   }
-  
 })
 
 router.get('/:contactId', async (req, res, next) => {
@@ -29,7 +28,7 @@ router.get('/:contactId', async (req, res, next) => {
       res.json(await getContactById(contactId))
     }
   } catch (err) {
-    console.log(err.message)
+    res.status(500).json({ 'message': err.message })
   }
 })
 
@@ -42,7 +41,7 @@ router.post('/', async (req, res, next) => {
       res.status(201).json(await addContact(value))
     }
   } catch (err) {
-    console.log(err.message)
+    res.status(500).json({ 'message': err.message })
   }
 })
 
@@ -57,7 +56,7 @@ router.delete('/:contactId', async (req, res, next) => {
       res.json({ "message": "contact deleted" })
     }
   } catch (err) {
-    console.log(err.message)
+    res.status(500).json({ 'message': err.message })
   }
 })
 
@@ -74,7 +73,7 @@ router.put('/:contactId', async (req, res, next) => {
       res.json(await updateContact(contactId, value))
     }
   } catch (err) {
-    console.log(err.message)
+    res.status(500).json({ 'message': err.message })
   }
 })
 
