@@ -13,8 +13,8 @@ const { listContacts,
 router.get('/', async (req, res, next) => {
   try {
     res.json(await listContacts())  
-  } catch (error) {
-    console.log(error.message)
+  } catch (err) {
+    console.log(err.message)
   }
   
 })
@@ -28,8 +28,8 @@ router.get('/:contactId', async (req, res, next) => {
     } else {
       res.json(await getContactById(contactId))
     }
-  } catch (error) {
-    console.log(error.message)
+  } catch (err) {
+    console.log(err.message)
   }
 })
 
@@ -41,8 +41,8 @@ router.post('/', async (req, res, next) => {
     } else {
       res.status(201).json(await addContact(value))
     }
-  } catch (error) {
-    console.log(error.message)
+  } catch (err) {
+    console.log(err.message)
   }
 })
 
@@ -56,8 +56,8 @@ router.delete('/:contactId', async (req, res, next) => {
       await removeContact(contactId)
       res.json({ "message": "contact deleted" })
     }
-  } catch (error) {
-    console.log(error.message)
+  } catch (err) {
+    console.log(err.message)
   }
 })
 
@@ -73,8 +73,8 @@ router.put('/:contactId', async (req, res, next) => {
     } else {
       res.json(await updateContact(contactId, value))
     }
-  } catch (error) {
-    console.log(error.message)
+  } catch (err) {
+    console.log(err.message)
   }
 })
 
