@@ -2,13 +2,13 @@ const { listContacts,
     getContactById,
     removeContact,
     addContact,
-    updateContact } = require('../models/contacts')
+    updateContact } = require('../db/mongodb')
 
 const listContactsData = async () => {
     try {
         return await listContacts()    
     } catch (error) {
-        console.log('Error: ', error.message)
+        return error
     }
 }
 
@@ -16,7 +16,7 @@ const listContactByIdData = async (id) => {
     try {
         return await getContactById(id)    
     } catch (error) {
-        console.log('Error: ', error.message)
+        return error
     }
 }
 
@@ -24,7 +24,7 @@ const removeContactById = async (id) => {
     try {
         return await removeContact(id)
     } catch (error) {
-        console.log('Error: ', error.message)
+        return error
     }
 }
 
@@ -32,7 +32,7 @@ const addContactData = async (contactObject) => {
     try {
         return await addContact(contactObject)
     } catch (error) {
-        console.log('Error: ', error.message)
+        return error
     }
 }
 
@@ -40,7 +40,7 @@ const updateContactByIdData = async (id, contactObject) => {
     try {
         return await updateContact(id, contactObject)
     } catch (error) {
-        console.log('Error: ', error.message)
+        return error
     }
 }
 
