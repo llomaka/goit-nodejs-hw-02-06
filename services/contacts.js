@@ -2,7 +2,9 @@ const { listContacts,
     getContactById,
     removeContact,
     addContact,
-    updateContact } = require('../db/mongodb')
+    updateContact,
+    updateStatusContact
+} = require('../db/mongodb')
 
 const listContactsData = async () => {
     try {
@@ -44,4 +46,12 @@ const updateContactByIdData = async (id, contactObject) => {
     }
 }
 
-module.exports = { listContactsData, listContactByIdData, removeContactById, addContactData, updateContactByIdData }
+const updateStatusContactByIdData = async (id, favoriteObject) => {
+    try {
+        return await updateStatusContact(id, favoriteObject)
+    } catch (error) {
+        return error
+    }
+}
+
+module.exports = { listContactsData, listContactByIdData, removeContactById, addContactData, updateContactByIdData, updateStatusContactByIdData }

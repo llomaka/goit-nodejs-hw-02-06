@@ -1,4 +1,4 @@
-const { listContactsData, updateContactByIdData } = require('../../services/contacts')
+const { listContactsData, listContactByIdData, updateContactByIdData } = require('../../services/contacts')
 const {RequestError} = require('../../helpers')
 
 const putOneContactById = async (req, res) => {
@@ -9,7 +9,8 @@ const putOneContactById = async (req, res) => {
     } else if (Object.keys(req.body).length === 0) {
         throw RequestError(400, "missing fields")
     } else {
-        res.json(await updateContactByIdData(contactId, req.body))
+        await updateContactByIdData(contactId, req.body)
+        res.json(await listContactByIdData(contactId))
     }
 }
 

@@ -72,4 +72,12 @@ const updateContact = async (id, body) => {
   }
 }
 
-module.exports = { listContacts, getContactById, removeContact, addContact, updateContact }
+const updateStatusContact = async (id, body) => {
+  try {
+    return await Contacts.findByIdAndUpdate(id, body)
+  } catch (error) {
+    return error
+  }
+}
+
+module.exports = { listContacts, getContactById, removeContact, addContact, updateContact, updateStatusContact }

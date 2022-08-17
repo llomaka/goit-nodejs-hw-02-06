@@ -16,4 +16,6 @@ router.delete('/:contactId', controllerWrapper(contactsController.deleteOneConta
 
 router.put('/:contactId', controllerWrapper(contactsController.putOneContactById))
 
+router.patch('/:contactId/favorite', controllerWrapper(contactsController.patchFavoriteContactById))
+
 module.exports = router
