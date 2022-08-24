@@ -4,7 +4,7 @@ const { listContacts,
     addContact,
     updateContact,
     updateStatusContact
-} = require('../db/mongodb')
+} = require('../db')
 
 const listContactsData = async () => {
     try {

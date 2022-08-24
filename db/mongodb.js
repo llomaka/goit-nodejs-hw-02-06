@@ -1,36 +1,4 @@
-require('dotenv').config()
-const mongoose = require('mongoose')
-mongoose.Promise = global.Promise
-
-mongoose.connect(process.env.DB_HOST, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => {
-  console.log('Database connection successful')
-}).catch((error) => {
-  console.log('Connection error: ', error.message)
-  process.exit(1)
-})
-
-const { Schema } = mongoose
-const contactsSchema = new Schema({
-  name: {
-    type: String,
-    required: [true, 'Set name for contact'],
-  },
-  email: {
-    type: String,
-  },
-  phone: {
-    type: String,
-  },
-  favorite: {
-    type: Boolean,
-    default: false,
-  },
-})
-
-const Contacts = mongoose.model('Contacts', contactsSchema)
+const { Contacts } = require('../models')
 
 const listContacts = async () => {
   try {
@@ -66,7 +34,7 @@ const addContact = async (body) => {
 
 const updateContact = async (id, body) => {
   try {
-    return await Contacts.findByIdAndUpdate(id, body)
+    return await Contacts.findByIdAndUpdate(id, body, {new: true})
   } catch (error) {
     return error
   }
@@ -74,7 +42,7 @@ const updateContact = async (id, body) => {
 
 const updateStatusContact = async (id, body) => {
   try {
-    return await Contacts.findByIdAndUpdate(id, body)
+    return await Contacts.findByIdAndUpdate(id, body, {new: true})
   } catch (error) {
     return error
   }
