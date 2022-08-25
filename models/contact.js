@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, SchemaTypes, model } = require('mongoose')
 const Joi = require('joi')
 const { handleSchemaValidationErrors } = require('../helpers')
 
@@ -6,7 +6,7 @@ const nameRegex = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-я�
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const phoneRegex = /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/
 
-const contactsSchema = new Schema({
+const contactSchema = new Schema({
     name: {
         type: String,
         required: [true, 'Set name for contact'],
@@ -24,11 +24,15 @@ const contactsSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    owner: {
+      type: SchemaTypes.ObjectId,
+      ref: 'user',
+    },
 }, { versionKey: false, timestamps: true })
 
-contactsSchema.post('save', handleSchemaValidationErrors)
+contactSchema.post('save', handleSchemaValidationErrors)
 
-const Contacts = model('Contacts', contactsSchema)
+const Contact = model('Contacts', contactSchema)
 
 const schemaAddContact = Joi.object({
     name: Joi.string()
@@ -74,9 +78,9 @@ const schemaUpdateFavorite = Joi.object({
         .required(),
 })
 
-const schemas = { schemaAddContact, schemaUpdateContact, schemaUpdateFavorite }
+const contactSchemas = { schemaAddContact, schemaUpdateContact, schemaUpdateFavorite }
 
 module.exports = {
-    Contacts,
-    schemas
+    Contact,
+    contactSchemas
 }

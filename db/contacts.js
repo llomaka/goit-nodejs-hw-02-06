@@ -1,8 +1,8 @@
-const { Contacts } = require('../models')
+const { Contact } = require('../models')
 
 const listContacts = async () => {
   try {
-    return await Contacts.find({})
+    return await Contact.find({})
   } catch (error) {
     return error
   }
@@ -10,7 +10,7 @@ const listContacts = async () => {
 
 const getContactById = async (id) => {
   try {
-    return await Contacts.findById(id)
+    return await Contact.findById(id)
   } catch (error) {
     return error
   }
@@ -18,7 +18,7 @@ const getContactById = async (id) => {
 
 const removeContact = async (id) => {
   try {
-    return await Contacts.findByIdAndDelete(id)
+    return await Contact.findByIdAndDelete(id)
   } catch (error) {
     return error
   }
@@ -26,7 +26,7 @@ const removeContact = async (id) => {
 
 const addContact = async (body) => {
   try {
-    return await Contacts.create(body)
+    return await Contact.create(body)
   } catch (error) {
     return error
   }
@@ -34,7 +34,7 @@ const addContact = async (body) => {
 
 const updateContact = async (id, body) => {
   try {
-    return await Contacts.findByIdAndUpdate(id, body, {new: true})
+    return await Contact.findByIdAndUpdate(id, body, {new: true})
   } catch (error) {
     return error
   }
@@ -42,7 +42,7 @@ const updateContact = async (id, body) => {
 
 const updateStatusContact = async (id, body) => {
   try {
-    return await Contacts.findByIdAndUpdate(id, body, {new: true})
+    return await Contact.findByIdAndUpdate(id, body, {new: true})
   } catch (error) {
     return error
   }
