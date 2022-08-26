@@ -6,9 +6,9 @@ const { listContacts,
     updateStatusContact
 } = require('../db')
 
-const listContactsData = async () => {
+const listContactsData = async (owner) => {
     try {
-        return await listContacts()    
+        return await listContacts(owner)   
     } catch (error) {
         return error
     }

@@ -8,7 +8,13 @@ const addUser = async (body) => {
   }
 }
 
-// const 
+const getUserById = async (id) => {
+  try {
+    return await User.findById(id)
+  } catch (error) {
+    return error
+  }
+}
 
 const getUserByEmail = async (email) => {
     try {
@@ -26,4 +32,4 @@ const getAllUsers = async () => {
     }
 }
 
-module.exports = { addUser, getUserByEmail, getAllUsers }
+module.exports = { addUser, getUserByEmail, getUserById, getAllUsers }

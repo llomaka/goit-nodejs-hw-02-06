@@ -2,7 +2,7 @@ const express = require('express')
 const usersRouter = express.Router()
 const { usersController: ctrl } = require('../../controllers')
 const { controllerWrapper } = require('../../helpers')
-const { validationBody, isValidId } = require('../../middlewares')
+const { auth, validationBody } = require('../../middlewares')
 const { userSchemas } = require('../../models')
 
 usersRouter.get('/', controllerWrapper(ctrl.listUsers))
@@ -11,7 +11,7 @@ usersRouter.post('/register', validationBody(userSchemas.schemaRegister), contro
 
 usersRouter.post('/login', validationBody(userSchemas.schemaLogin), controllerWrapper(ctrl.login))
 
-usersRouter.get('/:userId', isValidId, controllerWrapper(ctrl.getCurrent))
+usersRouter.get('/current', auth, controllerWrapper(ctrl.getCurrent))
 
 usersRouter.get('/logout', controllerWrapper(ctrl.logout))
 

@@ -1,8 +1,8 @@
 const { Contact } = require('../models')
 
-const listContacts = async () => {
+const listContacts = async (owner) => {
   try {
-    return await Contact.find({})
+    return await Contact.find(owner)
   } catch (error) {
     return error
   }
