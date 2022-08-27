@@ -1,13 +1,11 @@
-const getCurrent = require('./getCurrent')
+const current = require('./current')
 const login = require('./login')
 const logout = require('./logout')
 const register = require('./register')
-const listUsers = require('./getAllUsers')
 
 module.exports = {
-    getCurrent,
+    current,
     login,
     logout,
-    register,
-    listUsers
+    register
 }

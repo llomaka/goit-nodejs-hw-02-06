@@ -20,16 +20,19 @@ const userSchema = new Schema({
         enum: ["starter", "pro", "business"],
         default: "starter"
     },
-    token: String
+    token: {
+        type: String,
+        default: null
+    }
 }, { versionKey: false, timestamps: true })
 
 userSchema.post('save', handleSchemaValidationErrors)
 
 userSchema.methods.comparePassword = function (password) {
-    return bcrypt.compareSync(password, this.password)
+    return bcrypt.compare(password, this.password)
 }
 
-const User = model('Users', userSchema)
+const User = model('User', userSchema)
 
 const schemaRegister = Joi.object({
     password: Joi.string()

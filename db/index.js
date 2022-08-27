@@ -1,4 +1,7 @@
-const { listContacts, getContactById, removeContact, addContact, updateContact, updateStatusContact } = require('./contacts')
-const { addUser, getUserById, getUserByEmail, getAllUsers } = require('./users')
+const { listContacts, getContactById, removeContact, addContact, updateContact, updateStatusContact, countContacts } = require('./contacts')
+const { addUser, getUserById, getUserByEmail, getAllUsers, updateUser } = require('./users')
 
-module.exports = { listContacts, getContactById, removeContact, addContact, updateContact, updateStatusContact, addUser, getUserById, getUserByEmail, getAllUsers }
+module.exports = {
+    listContacts, getContactById, removeContact, addContact, updateContact, updateStatusContact, countContacts,
+    addUser, getUserById, getUserByEmail, getAllUsers, updateUser
+}

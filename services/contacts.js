@@ -3,12 +3,21 @@ const { listContacts,
     removeContact,
     addContact,
     updateContact,
-    updateStatusContact
+    updateStatusContact,
+    countContacts
 } = require('../db')
 
-const listContactsData = async (owner) => {
+const listContactsData = async (owner, offset, limit) => {
     try {
-        return await listContacts(owner)   
+        return await listContacts(owner, offset, limit)
+    } catch (error) {
+        return error
+    }
+}
+
+const countContactsData = async (owner) => {
+    try {
+        return await countContacts(owner)
     } catch (error) {
         return error
     }
@@ -54,4 +63,4 @@ const updateStatusContactByIdData = async (id, favoriteObject) => {
     }
 }
 
-module.exports = { listContactsData, listContactByIdData, removeContactById, addContactData, updateContactByIdData, updateStatusContactByIdData }
+module.exports = { listContactsData, listContactByIdData, removeContactById, addContactData, updateContactByIdData, updateStatusContactByIdData, countContactsData }

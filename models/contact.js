@@ -32,7 +32,7 @@ const contactSchema = new Schema({
 
 contactSchema.post('save', handleSchemaValidationErrors)
 
-const Contact = model('Contacts', contactSchema)
+const Contact = model('Contact', contactSchema)
 
 const schemaAddContact = Joi.object({
     name: Joi.string()

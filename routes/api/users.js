@@ -11,8 +11,8 @@ usersRouter.post('/register', validationBody(userSchemas.schemaRegister), contro
 
 usersRouter.post('/login', validationBody(userSchemas.schemaLogin), controllerWrapper(ctrl.login))
 
-usersRouter.get('/current', auth, controllerWrapper(ctrl.getCurrent))
+usersRouter.get('/current', auth, controllerWrapper(ctrl.current))
 
-usersRouter.get('/logout', controllerWrapper(ctrl.logout))
+usersRouter.get('/logout', auth, controllerWrapper(ctrl.logout))
 
 module.exports = usersRouter

@@ -1,8 +1,16 @@
 const { Contact } = require('../models')
 
-const listContacts = async (owner) => {
+const listContacts = async (owner, offset, limit) => {
   try {
-    return await Contact.find(owner)
+    return await Contact.find(owner).skip(offset).limit(limit)
+  } catch (error) {
+    return error
+  }
+}
+
+const countContacts = async (owner) => {
+  try {
+    return await Contact.find(owner).count()
   } catch (error) {
     return error
   }
@@ -48,4 +56,4 @@ const updateStatusContact = async (id, body) => {
   }
 }
 
-module.exports = { listContacts, getContactById, removeContact, addContact, updateContact, updateStatusContact }
+module.exports = { listContacts, getContactById, removeContact, addContact, updateContact, updateStatusContact, countContacts }

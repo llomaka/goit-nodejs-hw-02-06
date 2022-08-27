@@ -32,4 +32,12 @@ const getAllUsers = async () => {
     }
 }
 
-module.exports = { addUser, getUserByEmail, getUserById, getAllUsers }
+const updateUser = async (id, userObject) => {
+  try {
+    return await User.findByIdAndUpdate(id, userObject, {new: true})
+  } catch (error) {
+    return error
+  }
+}
+
+module.exports = { addUser, getUserByEmail, getUserById, getAllUsers, updateUser }
