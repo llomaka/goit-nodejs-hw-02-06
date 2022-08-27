@@ -15,4 +15,6 @@ usersRouter.get('/current', auth, controllerWrapper(ctrl.current))
 
 usersRouter.get('/logout', auth, controllerWrapper(ctrl.logout))
 
+usersRouter.patch('/', auth, validationBody(userSchemas.schemaSubscription), controllerWrapper(ctrl.subscription))
+
 module.exports = usersRouter
