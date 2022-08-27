@@ -1,4 +1,4 @@
-const { addUser, getUserById, getUserByEmail, getAllUsers, updateUser } = require('../db')
+const { addUser, getUserById, getUserByEmail, updateUser } = require('../db')
 
 const addUserData = async (userObject) => {
     try {
@@ -32,12 +32,4 @@ const getUserByEmailData = async (email) => {
     }
 }
 
-const getAllUsersData = async () => {
-    try {
-        return await getAllUsers()
-    } catch (error) {
-        return error
-    }
-}
-
-module.exports = { addUserData, getUserByEmailData, getUserByIdData, getAllUsersData, updateUserData }
+module.exports = { addUserData, getUserByEmailData, getUserByIdData, updateUserData }
