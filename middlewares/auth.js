@@ -19,10 +19,7 @@ const auth = async (req, _, next) => {
         req.user = user
         next()
     } catch (error) {
-        if (error.message.toLowerCase() === 'invalid signature' || error.message.toLowerCase() === 'jwt expired' || error.message.toLowerCase() === 'jwt malformed' || error.message.toLowerCase() ===  'invalid token') {
-            error.status = 401
-        }
-        next(error)
+        next(RequestError(401, error.message))
     }
 }
 
