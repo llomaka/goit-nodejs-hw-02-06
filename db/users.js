@@ -32,4 +32,12 @@ const updateUser = async (id, userObject) => {
   }
 }
 
-module.exports = { addUser, getUserByEmail, getUserById, updateUser }
+const getUserByVerToken = async (verificationToken) => {
+  try {
+    return await User.findOne({verificationToken})
+  } catch (error) {
+    return error
+  }
+}
+
+module.exports = { addUser, getUserByEmail, getUserById, updateUser, getUserByVerToken }

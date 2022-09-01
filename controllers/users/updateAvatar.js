@@ -22,7 +22,6 @@ const updateAvatar = async (req, res) => {
             await fs.unlink(oldAvatar)
         }
         const avatarURL = path.join(req.headers.host, 'avatars', avatarName)
-        console.log(req.user.avatarURL)
         const updatedUser = await usersServices.updateUserData(_id, { avatarURL })
         res.status(200).json({avatarURL: updatedUser.avatarURL})
     } catch (error) {

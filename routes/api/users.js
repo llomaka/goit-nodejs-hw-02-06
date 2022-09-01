@@ -17,4 +17,8 @@ usersRouter.get('/logout', auth, controllerWrapper(ctrl.logout))
 
 usersRouter.patch('/', auth, validationBody(userSchemas.schemaSubscription), controllerWrapper(ctrl.subscription))
 
+usersRouter.get('/verify/:verificationToken', controllerWrapper(ctrl.verification))
+
+usersRouter.post('/verify', validationBody(userSchemas.schemaVerification), controllerWrapper(ctrl.repeatVerify))
+
 module.exports = usersRouter
