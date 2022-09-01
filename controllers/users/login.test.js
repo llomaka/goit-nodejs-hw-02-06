@@ -28,13 +28,14 @@ describe('Login controller test', () => {
         expect(response.body.user).toHaveProperty('email')
         expect(response.body.user).toHaveProperty('subscription')
     })
-    test('Login returns token of String type', async () => {
+    test('Login returns token', async () => {
         const response = await request(app).post("/api/users/login", login).send(testUser).set('Accept', 'application/json')
         expect(response.body).toHaveProperty('token')
         expect(typeof response.body.token).toBe('string')
     })
     test('Login returns object with email and subscription fields of String type', async () => {
         const response = await request(app).post("/api/users/login", login).send(testUser).set('Accept', 'application/json')
+        expect(typeof response.body.user).toEqual('object')
         expect(typeof response.body.user.email).toBe('string')
         expect(typeof response.body.user.subscription).toBe('string')
     })
