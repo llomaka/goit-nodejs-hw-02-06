@@ -1,2 +1,0 @@
-DB_HOST=mongodb+srv://dbUser:SweetH0m3@cluster0.kvmff7p.mongodb.net/db-contacts?retryWrites=true&w=majority
-SECRET_KEY=YPJFLZLMQi0izu03oiZllhtGrlBE8dlv

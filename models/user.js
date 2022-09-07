@@ -27,7 +27,15 @@ const userSchema = new Schema({
     token: {
         type: String,
         default: null,
-    }
+    },
+    verify: {
+        type: Boolean,
+        default: false,
+    },
+    verificationToken: {
+        type: String,
+        required: [true, 'Verify token is required'],
+    },
 }, { versionKey: false, timestamps: true })
 
 userSchema.post('save', handleSchemaValidationErrors)
@@ -72,7 +80,14 @@ const schemaSubscription = Joi.object({
         .required(),
 })
 
-const userSchemas = { schemaRegister, schemaLogin, schemaSubscription }
+const schemaVerification = Joi.object({
+    email: Joi.string()
+        .label('Email Address')
+        .pattern(emailRegex)
+        .required()
+})
+
+const userSchemas = { schemaRegister, schemaLogin, schemaSubscription, schemaVerification }
 
 module.exports = {
     User,

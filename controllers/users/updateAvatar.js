@@ -8,21 +8,15 @@ const updateAvatar = async (req, res) => {
     try {
         const avatarsDir = path.join(__dirname, '../../', 'public', 'avatars')
         const { path: tempUpload, filename } = req.file
-        const { _id, avatarURL: existingURL } = req.user
+        const { _id } = req.user
         const [extension] = filename.split('.').reverse()
-        const [oldExt] = existingURL.split('.').reverse()
         const avatarName = `${_id}.${extension}`
         const resultUpload = path.join(avatarsDir, avatarName)
         const image = await Jimp.read(tempUpload)
         image.cover(250, 250)
         await image.writeAsync(resultUpload)
         await fs.unlink(tempUpload)
-        if (extension !== oldExt) {
-            const oldAvatar = path.join(avatarsDir, `${_id}.${oldExt}`)
-            await fs.unlink(oldAvatar)
-        }
         const avatarURL = path.join(req.headers.host, 'avatars', avatarName)
-        console.log(req.user.avatarURL)
         const updatedUser = await usersServices.updateUserData(_id, { avatarURL })
         res.status(200).json({avatarURL: updatedUser.avatarURL})
     } catch (error) {
