@@ -3,7 +3,6 @@ const { usersServices } = require('../../services')
 
 const verification = async (req, res) => {
     const { verificationToken } = req.params
-    console.log(verificationToken)
     const user = await usersServices.getUserByVerTokenData(verificationToken)
     if (!user) {
         throw RequestError(404, 'User not found')
